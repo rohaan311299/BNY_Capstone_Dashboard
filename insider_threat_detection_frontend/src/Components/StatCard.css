@@ -1,0 +1,14 @@
+.stat-card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: xx-large;
+}

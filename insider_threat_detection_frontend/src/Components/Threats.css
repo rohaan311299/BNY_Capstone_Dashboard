@@ -1,0 +1,31 @@
+.threats {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+th, tr, td {
+    border: 1px solid black;
+}
+
+th {
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+td {
+    padding: 10px;
+}
+
+tr {
+    text-align: center;
+    margin: 10px;
+}
+
+.scrollable {
+    height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+    border: 1px solid black;
+    padding: 10px;
+}
