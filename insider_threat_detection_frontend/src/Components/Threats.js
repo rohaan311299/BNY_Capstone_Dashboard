@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import './Threats.css';
+import { useNavigate } from 'react-router-dom';
 
 function Threats() {
     const [threatsData, setThreatsData] = useState([]);
+    const [selectedThreatId, setSelectedThreatId] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localHost:1900/api/predictions')
@@ -43,6 +46,10 @@ function Threats() {
         })
         .catch(error => console.error('Failed to update threat:', error));
     };
+
+    const handleRowClick = (id) => {
+        navigate(`/threat/${id}`); // Navigate to the Threat detail page
+    };
     
 
     return (
@@ -60,7 +67,7 @@ function Threats() {
                     <tbody>
                         {threatsData.map((threat, index) => (
                             <tr key={index}>
-                                <td>{threat.date}</td>
+                                <td onClick={() => handleRowClick(threat._id)}>{threat.date}</td>
                                 <td>{threat.user}</td>
                                 <td>{threat.role}</td>
                                 <td>{threat.predictions === -1 ? "Not A Threat":"Threat"}</td>

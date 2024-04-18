@@ -196,6 +196,21 @@ app.post('/api/predictions/update', async (req, res) => {
     }
 });
 
+app.get('/api/predictions/:id', async (req, res) => {
+    const { id } = req.params;  // Extract the ID from the route parameters
+
+    try {
+        const threat = await Prediction.findById(id);  // Use Mongoose's findById method to fetch the threat
+        if (!threat) {
+            return res.status(404).send({ message: 'Threat not found' });  // Return 404 if no threat is found
+        }
+        res.json(threat);  // Send the threat data as JSON
+    } catch (error) {
+        console.error('Error fetching threat by ID:', error);
+        res.status(500).send({ message: 'Failed to fetch threat' });  // Send a 500 response on error
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
